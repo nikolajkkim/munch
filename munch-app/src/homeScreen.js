@@ -1,14 +1,15 @@
 import { View, Text, Button, TouchableOpacity, StyleSheet, SafeAreaView, Image} from 'react-native';
 import * as React from 'react';
 
+
 const HomeScreen = ({ navigation }) => {
   const handleLeftButtonPress = () => {
-    navigation.navigate('')
+    navigation.navigate('Munchers')
     // Add your left button logic here
   };
 
   const handleRightButtonPress = () => {
-    alert('Right Button Pressed');
+    navigation.navigate('Munch Map')
     // Add your right button logic here
   };
 
