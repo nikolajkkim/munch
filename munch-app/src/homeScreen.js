@@ -1,4 +1,4 @@
-import { View, Text, Button, TouchableOpacity, StyleSheet, SafeAreaView} from 'react-native';
+import { View, Text, Button, TouchableOpacity, StyleSheet, SafeAreaView, Image} from 'react-native';
 import * as React from 'react';
 
 const HomeScreen = ({ navigation }) => {
@@ -16,15 +16,26 @@ const HomeScreen = ({ navigation }) => {
       <SafeAreaView style={styles.navBar}>
         <View style={styles.leftButtons}>
         {/* Left Button 1 */}
-        <TouchableOpacity onPress={handleLeftButtonPress} style={styles.button}>
-          <Text>Left Button 1</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={handleLeftButtonPress} style={styles.button}>
+            <Image
+              source={require('./images/friends.png')}
+              style={styles.iconImage}
+            />
+          </TouchableOpacity>
         </View>
+
+        <Image
+          source={require('./images/munch.png')}
+          style={styles.iconImage}
+        />
 
         <View style={styles.rightButtons}>
           {/* Right Button 1 */}
           <TouchableOpacity onPress={handleRightButtonPress} style={styles.button}>
-            <Text>Right Button 1</Text>
+            <Image
+              source={require('./images/map.png')}
+              style={styles.iconImage}
+            />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -37,8 +48,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 20, // Add padding at the top to accommodate the safe area
+    paddingHorizontal: 30,
+    paddingTop: 30, // Add padding at the top to accommodate the safe area
   },
   leftButtons: {
     flexDirection: 'row',
@@ -47,12 +58,20 @@ const styles = StyleSheet.create({
   rightButtons: {
     flexDirection: 'row',
     alignItems: 'flex-end',
+    paddingRight: 10,
   },
   button: {
-    backgroundColor: 'lightblue',
+    backgroundColor: 'rgba(0,0,0,0)',
     padding: 10,
     margin: 5,
     borderRadius: 5,
+    width: 50,
+    height: 50,
+  },
+  iconImage: {
+    width: 50,
+    height: 50,
+    marginRight: 5,
   },
 });
 
