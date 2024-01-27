@@ -5,30 +5,14 @@ import { View, Text, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <View style={{ marginTop: 100 }}>
-        <Button
-          title="Go to Second Screen"
-          onPress={() => navigation.navigate('SecondScreen')}
-        />
-      </View>
-      <Button
-        title="Go to Third Screen"
-        onPress={() => navigation.navigate('ThirdScreen')}
-      />
-    </View>
-  );
-}
+import HomeScreen from './homeScreen';
 
 function SecondScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Second Screen</Text>
       <Button
-        title="Go back to Home"
+        title="Go back to Home2"
         onPress={() => navigation.navigate('Home')}
       />
     </View>
@@ -40,7 +24,7 @@ function ThirdScreen({ navigation }) {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Third Screen</Text>
       <Button
-        title="Go back to Home"
+        title="Go back to Home3"
         onPress={() => navigation.navigate('Home')}
       />
     </View>
