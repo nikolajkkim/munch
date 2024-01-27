@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './homeScreen';
+import FriendScreen from './friendScreen';
+import MapScreen from './mapScreen';
 
 
 
@@ -15,10 +17,12 @@ function App() {
 return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Munchers" component={FriendScreen} />
+        <Stack.Screen name="Munch Map" component={MapScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  );``
+  );
 }
 
 export default App;
