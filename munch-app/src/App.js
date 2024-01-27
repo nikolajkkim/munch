@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import * as React from 'react';
 import { View, Text, Button } from 'react-native';
@@ -18,7 +18,7 @@ return (
         <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  );``
 }
 
 export default App;

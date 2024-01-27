@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const HomeScreen = ({ navigation }) => {
   const handleLeftButtonPress = () => {
-    alert('Left Button Pressed');
+    navigation.navigate('')
     // Add your left button logic here
   };
 
@@ -13,7 +13,8 @@ const HomeScreen = ({ navigation }) => {
   };
 
     return (
-      <SafeAreaView style={styles.navBar}>
+      <SafeAreaView style={{ flex: 0.1}}>
+        <View style={styles.navBar}>
         <View style={styles.leftButtons}>
         {/* Left Button 1 */}
           <TouchableOpacity onPress={handleLeftButtonPress} style={styles.button}>
@@ -37,6 +38,7 @@ const HomeScreen = ({ navigation }) => {
               style={styles.iconImage}
             />
           </TouchableOpacity>
+        </View> 
         </View>
       </SafeAreaView>
     );
@@ -48,7 +50,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
     paddingTop: 30, // Add padding at the top to accommodate the safe area
   },
   leftButtons: {
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
   rightButtons: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    paddingRight: 10,
+    paddingRight: 15,
   },
   button: {
     backgroundColor: 'rgba(0,0,0,0)',
@@ -76,6 +78,8 @@ const styles = StyleSheet.create({
     width: 150,
     height: 50,
     alignSelf: 'center',
+    marginLeft: 12,
+    marginTop: 20,
   },
 });
 
