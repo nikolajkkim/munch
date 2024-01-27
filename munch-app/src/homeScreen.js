@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
 
         <Image
           source={require('./images/munch.png')}
-          style={styles.iconImage}
+          style={styles.munchTitleImage}
         />
 
         <View style={styles.rightButtons}>
@@ -71,7 +71,11 @@ const styles = StyleSheet.create({
   iconImage: {
     width: 50,
     height: 50,
-    marginRight: 5,
+  },
+  munchTitleImage: {
+    width: 150,
+    height: 50,
+    alignSelf: 'center',
   },
 });
 
