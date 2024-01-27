@@ -1,13 +1,65 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react';
+import * as React from 'react';
+import { View, Text, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <View style={{ marginTop: 100 }}>
+        <Button
+          title="Go to Second Screen"
+          onPress={() => navigation.navigate('SecondScreen')}
+        />
+      </View>
+      <Button
+        title="Go to Third Screen"
+        onPress={() => navigation.navigate('ThirdScreen')}
+      />
+    </View>
+  );
+}
+
+function SecondScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Second Screen</Text>
+      <Button
+        title="Go back to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+function ThirdScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Third Screen</Text>
+      <Button
+        title="Go back to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
+    </View>
+  );
+}
+
+
+
+const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <div>
-      <h1>Hello, React!</h1>
-    </div>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="SecondScreen" component={SecondScreen} />
+        <Stack.Screen name="ThirdScreen" component={ThirdScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
