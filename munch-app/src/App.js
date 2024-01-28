@@ -11,7 +11,6 @@ import MapScreen from './mapScreen';
 import UserPostScreen from './userPostScreen';
 
 
-
 const Stack = createNativeStackNavigator();
 
 function App() {

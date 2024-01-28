@@ -116,7 +116,6 @@ const FriendScreen = ({ navigation }) => {
         alignItems: 'flex-start', // Align text to the left
     },
     username: {
-        fontFamily: 'MilkyNice',
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 5,
