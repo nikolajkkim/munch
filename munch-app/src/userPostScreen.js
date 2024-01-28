@@ -20,6 +20,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import CButton from "./components/CButton";
+import { addFeedItem } from './homeScreen';
 // // import {starRating, setStarRating, RatingBar} from './components/RatingBar';
 // import RatingBar from "./components/RatingBar";
 
@@ -66,8 +67,9 @@ export default function App() {
       try {
         await MediaLibrary.createAssetAsync(image);
         alert("Picture saved!");
-        setImage(null);
         navigation.navigate('Home', { image });
+        setImage(null);
+        
       } catch (e) {
         console.log(e);
       }
@@ -77,6 +79,7 @@ export default function App() {
   const handleTextSizeChange = (contentWidth, contentHeight) => {
     setTextInputHeight(Math.max(35,contentHeight)); // sets min height
   };
+
 
   return (
     <View style={styles.container}>
@@ -237,7 +240,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "gray",
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: 50,
