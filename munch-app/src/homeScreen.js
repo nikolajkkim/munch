@@ -18,11 +18,11 @@ const HomeScreen = ({ navigation }) => {
   
 
   const [feedData, setFeedData] = useState([
-    { id: '1', image: require('./images/stevenlee.jpg'), caption: 'Beautiful sunset' },
-    { id: '2', image: require('./images/stevenbutt.png'), caption: 'Delicious meal' },
-    { id: '3', image: require('./images/stevenmee.png'), caption: 'I love COCO!' },
-    { id: '4', image: require('./images/stevenkim.png'), caption: 'TASTEA is AWESOME' },
-    { id: '5', image: require('./images/stevenyang.png'), caption: 'Who wants to grab a bite?' },
+    { id: '1', image: require('./images/chipotle2.jpg'), caption: 'You wish you had some right now' },
+    { id: '2', image: require('./images/sharetea2.jpg'), caption: 'Boba anyone?' },
+    { id: '3', image: require('./images/chipotle.jpg'), caption: 'Mexican Food is my favorite' },
+    { id: '4', image: require('./images/sharetea.jpg'), caption: 'I love sharetea OMG' },
+    { id: '5', image: require('./images/chafortea.jpg'), caption: 'Ive been craving this' },
   ]);
 
   const [makeNewEntry, SetMakeNewEntry] = useState(true);
@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
     console.log("running")
     const newItem = {
       id: `${Date.now()}`,
-      image: require('./images/stevenmee.png'),
+      image: require('./images/chipotleextra.jpg'),
       caption: 'New item caption',
     };
     console.log("addfeedstatus", feedData)
