@@ -10,10 +10,10 @@ const FriendScreen = ({ navigation }) => {
     { id: '2', username: 'Steven Lee', munchCount: 500, profilePicture: require('./images/stevenhee.png') },
     { id: '3', username: 'Nikolaj Kim', munchCount: 99, profilePicture: require('./images/stevendee.png') },
     { id: '4', username: 'Jaime Jaime', munchCount: 1, profilePicture: require('./images/stevenmee.png') },
-    { id: '5', username: 'Shindler :(', munchCount: 0, profilePicture: require('./images/stevenkim.jpg') },
+    { id: '5', username: 'King Shindler', munchCount: 0, profilePicture: require('./images/stevenkim.png') },
     { id: '6', username: 'Luke Vargas', munchCount: 28, profilePicture: require('./images/stevenvargas.png') },
     { id: '7', username: 'Esther Lee', munchCount: 6000, profilePicture: require('./images/stevenyang.png') },
-    { id: '8', username: 'Elise', munchCount: 5, profilePicture: require('./images/stevenbutt.jpg') },
+    { id: '8', username: 'Elise', munchCount: 5, profilePicture: require('./images/stevenbutt.png') },
   ];
 
   const renderFeedItem = ({ item }) => (
@@ -81,8 +81,9 @@ const FriendScreen = ({ navigation }) => {
       height: 50,
     },
     iconImage: {
-      width: 50,
-      height: 50,
+        marginTop: 15,
+      width: 30,
+      height: 30,
     },
     munchTitleImage: {
       width: 190,
@@ -115,6 +116,7 @@ const FriendScreen = ({ navigation }) => {
         alignItems: 'flex-start', // Align text to the left
     },
     username: {
+        fontFamily: 'MilkyNice',
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 5,

@@ -8,7 +8,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const handleRightButtonPress = () => {
-    navigation.navigate('Munch Map')
+    navigation.navigate('Post Screen')
     // Add your right button logic here
   };
 
