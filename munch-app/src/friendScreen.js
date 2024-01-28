@@ -7,11 +7,13 @@ const FriendScreen = ({ navigation }) => {
   }
   const feedData = [
     { id: '1', username: 'Custo Yang', munchCount: 5, profilePicture: require('./images/stevenlee.jpg') },
-    { id: '2', username: 'Steven Lee', munchCount: 500, profilePicture: require('./images/stevenlee.jpg') },
-    { id: '2', username: 'Nikolaj Kim', munchCount: 99, profilePicture: require('./images/stevenlee.jpg') },
-    { id: '2', username: 'Jaime Jaime', munchCount: 1, profilePicture: require('./images/stevenlee.jpg') },
-    { id: '2', username: 'Shindler :(', munchCount: 0, profilePicture: require('./images/stevenlee.jpg') },
-
+    { id: '2', username: 'Steven Lee', munchCount: 500, profilePicture: require('./images/stevenhee.png') },
+    { id: '3', username: 'Nikolaj Kim', munchCount: 99, profilePicture: require('./images/stevendee.png') },
+    { id: '4', username: 'Jaime Jaime', munchCount: 1, profilePicture: require('./images/stevenmee.png') },
+    { id: '5', username: 'Shindler :(', munchCount: 0, profilePicture: require('./images/stevenkim.jpg') },
+    { id: '6', username: 'Luke Vargas', munchCount: 28, profilePicture: require('./images/stevenvargas.png') },
+    { id: '7', username: 'Esther Lee', munchCount: 6000, profilePicture: require('./images/stevenyang.png') },
+    { id: '8', username: 'Elise', munchCount: 5, profilePicture: require('./images/stevenbutt.jpg') },
   ];
 
   const renderFeedItem = ({ item }) => (
@@ -27,19 +29,19 @@ const FriendScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.navBar}>
-        <View style={styles.nackButtons}>
-        {/* BACK TO HOME BUTTON! */}
-          <TouchableOpacity onPress={handleBackButtonPress} style={styles.button}>
             <Image
-              source={require('./images/friends.png')}
-              style={styles.iconImage}
+            source={require('./images/munchers.png')}
+            style={styles.munchTitleImage}
             />
-          </TouchableOpacity>
-        <Image
-        source={require('./images/munch.png')}
-        style={styles.munchTitleImage}
-        />
-        </View>
+            <View style={styles.backButtons}>
+                {/* BACK TO HOME BUTTON! */}
+                <TouchableOpacity onPress={handleBackButtonPress} style={styles.button}>
+                    <Image
+                    source={require('./images/backArrow.png')}
+                    style={styles.iconImage}
+                    />
+                </TouchableOpacity>
+            </View>
         </View>
         <FlatList
           data={feedData}
@@ -83,11 +85,11 @@ const FriendScreen = ({ navigation }) => {
       height: 50,
     },
     munchTitleImage: {
-      width: 150,
-      height: 50,
+      width: 190,
+      height: 70,
       alignSelf: 'center',
       marginLeft: 12,
-      marginTop: 20,
+      marginTop: 32,
     },
     feedContainer: {
       flex: 1,
@@ -103,9 +105,9 @@ const FriendScreen = ({ navigation }) => {
         marginBottom: 16,
     },
     profilePicture: {
-        width: 50,
-        height: 50,
-        borderRadius: 25,
+        width: 70,
+        height: 70,
+        borderRadius: 35,
         marginRight: 10,
     },
     textContainer: {
@@ -113,12 +115,12 @@ const FriendScreen = ({ navigation }) => {
         alignItems: 'flex-start', // Align text to the left
     },
     username: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 5,
     },
     munchCount: {
-        fontSize: 14,
+        fontSize: 15,
     },
   });
 
