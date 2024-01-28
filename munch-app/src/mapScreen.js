@@ -21,6 +21,7 @@ const MapScreen = () => {
        style = {styles.map}
        onRegionChange = {onRegionChange}
        initialRegion = {{"latitude": 33.64993110376333, "latitudeDelta": 0.016433225744130198, "longitude": -117.83941458293062, "longitudeDelta": 0.013158430752554295}}
+      //  THESE ARE THE CORDINATES FOR UTC!!!!
        >
 
       </MapView>
