@@ -20,8 +20,8 @@ return (
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Munchers" component={FriendScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name="Munch Map" component={MapScreen} />
-        <Stack.Screen name="Post Screen" component={UserPostScreen} />
+        <Stack.Screen name="Munch Map" component={MapScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Post Screen" component={UserPostScreen} options={{ headerShown: true }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

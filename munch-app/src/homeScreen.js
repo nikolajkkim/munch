@@ -1,5 +1,7 @@
 import { FlatList, View, TouchableOpacity, StyleSheet, SafeAreaView, Image, Text } from 'react-native';
-import * as React from 'react';
+import { useRoute } from '@react-navigation/native';
+import React, { useCallback, useState, useEffect } from 'react';
+
 
 const HomeScreen = ({ navigation }) => {
   const handleLeftButtonPress = () => {
@@ -12,13 +14,43 @@ const HomeScreen = ({ navigation }) => {
     // Add your right button logic here
   };
 
-  const feedData = [
+ 
+  
+
+  const [feedData, setFeedData] = useState([
     { id: '1', image: require('./images/stevenlee.jpg'), caption: 'Beautiful sunset' },
-    { id: '2', image: require('./images/stevenlee.jpg'), caption: 'Delicious meal' },
-    { id: '3', image: require('./images/stevenlee.jpg'), caption: 'I love COCO!' },
-    { id: '4', image: require('./images/stevenlee.jpg'), caption: 'TASTEA is AWESOME' },
-    { id: '5', image: require('./images/stevenlee.jpg'), caption: 'Who wants to grab a bite?' },
-  ];
+    { id: '2', image: require('./images/stevenbutt.png'), caption: 'Delicious meal' },
+    { id: '3', image: require('./images/stevenmee.png'), caption: 'I love COCO!' },
+    { id: '4', image: require('./images/stevenkim.png'), caption: 'TASTEA is AWESOME' },
+    { id: '5', image: require('./images/stevenyang.png'), caption: 'Who wants to grab a bite?' },
+  ]);
+
+  const [makeNewEntry, SetMakeNewEntry] = useState(true);
+
+
+  const addFeedItem = useCallback(() => {
+    // Create a new item to add to the feed
+    console.log("running")
+    const newItem = {
+      id: `${Date.now()}`,
+      image: require('./images/stevenmee.png'),
+      caption: 'New item caption',
+    };
+    console.log("addfeedstatus", feedData)
+  
+    // Use the setFeedData function to update the feedData state
+    SetMakeNewEntry(false);
+    setFeedData((prevFeedData) => [...prevFeedData, newItem]);
+  }, []);
+  
+  // Call this function whenever you want to add a new item to the feed
+  
+
+  const handlePhotoTakingButtonPress = () => {
+    addFeedItem();
+    navigation.navigate('Post Screen')
+  }
+  
 
   const renderFeedItem = ({ item }) => (
     <View style={styles.feedItem}>
@@ -26,6 +58,7 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.caption}>{item.caption}</Text>
     </View>
   );
+  //const { image } = route.params;
 
     return (
       <SafeAreaView style={styles.container}>
@@ -54,6 +87,7 @@ const HomeScreen = ({ navigation }) => {
               />
             </TouchableOpacity>
           </View>
+          
         </View>
 
         <FlatList
@@ -61,7 +95,17 @@ const HomeScreen = ({ navigation }) => {
           keyExtractor={(item) => item.id}
           renderItem={renderFeedItem}
           style={styles.feedContainer}
+          inverted
         />
+        <View style={styles.cameraButton}>
+            {/* Camera Button */}
+            <TouchableOpacity onPress={handlePhotoTakingButtonPress} style={styles.button}>
+              <Image
+                source={require('./images/camera_button.png')}
+                style={styles.iconImage}
+              />
+            </TouchableOpacity>
+          </View>
       </SafeAreaView>
     );
 }
@@ -124,6 +168,11 @@ const styles = StyleSheet.create({
   caption: {
     marginTop: 8,
     fontSize: 16,
+  },
+  cameraButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginLeft: 150,
   },
 });
 

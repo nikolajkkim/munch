@@ -1,6 +1,6 @@
 // npx expo install expo-media-library
 // npx expo install expo-camera
-
+import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
@@ -20,8 +20,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import CButton from "./components/CButton";
-// import {starRating, setStarRating, RatingBar} from './components/RatingBar';
-import RatingBar from "./components/RatingBar";
+import { addFeedItem } from './homeScreen';
+// // import {starRating, setStarRating, RatingBar} from './components/RatingBar';
+// import RatingBar from "./components/RatingBar";
 
 export default function App() {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -34,6 +35,7 @@ export default function App() {
 
   const [text, setText] = useState('')
   const [textInputHeight, setTextInputHeight] = useState(35); // Initial height
+  const navigation = useNavigation();
 
 
   // PERMISSIONS
@@ -65,12 +67,19 @@ export default function App() {
       try {
         await MediaLibrary.createAssetAsync(image);
         alert("Picture saved!");
+        navigation.navigate('Home', { image });
         setImage(null);
+        
       } catch (e) {
         console.log(e);
       }
     }
   };
+
+  const handleTextSizeChange = (contentWidth, contentHeight) => {
+    setTextInputHeight(Math.max(35,contentHeight)); // sets min height
+  };
+
 
   return (
     <View style={styles.container}>
@@ -78,7 +87,7 @@ export default function App() {
         // TAKING PICTURE OPTION!!!
         <View style={styles.photoTakingContainer}>
           <View style={styles.photoTakingOptionButtons}>
-            <CButton
+            {/* <CButton
               icon={"flash"}
               color={
                 flash === Camera.Constants.FlashMode.off ? "gray" : "#f1f1f1"
@@ -91,7 +100,7 @@ export default function App() {
                     : Camera.Constants.FlashMode.off
                 );
               }}
-            />
+            /> */}
             <CButton
               icon={"retweet"}
               onPress={() => {
@@ -109,7 +118,7 @@ export default function App() {
             FlashMode={flash}
             ref={cameraRef}
           ></Camera>
-          <CButton title={"Munch It!"} onPress={takePicture} />
+          <CButton title={"Munch It!"} onPress={takePicture} style={styles.bottombuttons} />
         </View>
       ) : (
         // POSTING PICTURE OPTION!!!!!!
@@ -120,17 +129,24 @@ export default function App() {
 
         {/* CAPTION OPTION */}
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <View style={styles.containerStyle}>
             <KeyboardAvoidingView
                 style={captionStyles.containerStyle}
                 behavior={Platform.OS === "ios" ? "padding" : "height"}>
                 <View style={[captionStyles.fieldStyle, {height: textInputHeight}]}>
                 <TextInput 
-                      multiline 
-                      placeholder="Write something with multilines  here.."
-                      maxLength={150}
-                      style={captionStyles.inputStyle} />
+                    multiline 
+                    placeholder="Write something with multilines  here.."
+                    maxLength={150}
+                    style={captionStyles.inputStyle}
+                    value={text}
+                    onChangeText={(newText) => setText(newText)}
+                    onContentSizeChange={(e) =>
+                    handleTextSizeChange(e.nativeEvent.contentSize.width, e.nativeEvent.contentSize.height)
+              } />
                 </View>
             </KeyboardAvoidingView>
+            </View>
         </TouchableWithoutFeedback>
 
           {/* STARS FOR RATING */}
@@ -211,8 +227,9 @@ export default function App() {
             <CButton
               title={"Don't like your Munch?"}
               onPress={() => setImage(null)}
+              style={styles.bottombuttons}
             />
-            <CButton title={"Munch It!"} onPress={saveImage} />
+            <CButton title={"Munch It!"} onPress={saveImage} style={styles.bottombuttons} />
           </View>
         </View>
       )}
@@ -223,7 +240,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "gray",
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     paddingBottom: 50,
@@ -233,9 +250,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    borderColor: "red", // Color of the border
-    borderWidth: 5, // Width of the border
-    borderRadius: 10, // Border radius for rounded corners (optional)
     padding: 10,
     width: "80%",
   },
@@ -243,6 +257,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 30,
+    fontcolor: 'black',
   },
   camera: {
     width: 300,
@@ -264,14 +279,17 @@ const styles = StyleSheet.create({
     height: 300,
     borderRadius: 20,
     alignSelf: "flex-start",
-    marginTop: 10,
+    marginTop: 40,
   },
+  bottombuttons:{
+    fontcolor: 'black',
+  }
 });
 
 const ratingStyles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'pink',
+        // backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'flex-start',
         padding: 4,
@@ -297,10 +315,10 @@ const ratingStyles = StyleSheet.create({
 const captionStyles = StyleSheet.create({
     containerStyle: {
       display: "flex",
-      flex: 1,
+      //flex: 1,
       flexDirection: "column",
       justifyContent: "flex-start",
-      width: "100%",
+      width: 300,
       paddingTop: 10,
       height:'10%',
       backgroundColor: 'white'
@@ -309,6 +327,7 @@ const captionStyles = StyleSheet.create({
       display: "flex",
       flexDirection: "column",
       marginBottom: 28,
+      
     },
     labelStyle: {
       marginBottom: 8,
@@ -319,5 +338,6 @@ const captionStyles = StyleSheet.create({
       borderWidth: 1,
       borderRadius: 4,
       padding: 8,
+      height:'100%',
     },
   });
