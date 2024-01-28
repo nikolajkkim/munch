@@ -15,6 +15,9 @@ const HomeScreen = ({ navigation }) => {
   const feedData = [
     { id: '1', image: require('./images/stevenlee.jpg'), caption: 'Beautiful sunset' },
     { id: '2', image: require('./images/stevenlee.jpg'), caption: 'Delicious meal' },
+    { id: '3', image: require('./images/stevenlee.jpg'), caption: 'I love COCO!' },
+    { id: '4', image: require('./images/stevenlee.jpg'), caption: 'TASTEA is AWESOME' },
+    { id: '5', image: require('./images/stevenlee.jpg'), caption: 'Who wants to grab a bite?' },
   ];
 
   const renderFeedItem = ({ item }) => (
