@@ -1,6 +1,5 @@
-import { View, Text, Button, TouchableOpacity, StyleSheet, SafeAreaView, Image} from 'react-native';
+import { FlatList, View, TouchableOpacity, StyleSheet, SafeAreaView, Image, Text } from 'react-native';
 import * as React from 'react';
-
 
 const HomeScreen = ({ navigation }) => {
   const handleLeftButtonPress = () => {
@@ -13,41 +12,63 @@ const HomeScreen = ({ navigation }) => {
     // Add your right button logic here
   };
 
+  const feedData = [
+    { id: '1', image: require('./images/stevenlee.jpg'), caption: 'Beautiful sunset' },
+    { id: '2', image: require('./images/stevenlee.jpg'), caption: 'Delicious meal' },
+  ];
+
+  const renderFeedItem = ({ item }) => (
+    <View style={styles.feedItem}>
+      <Image source={item.image} style={styles.feedImage} />
+      <Text style={styles.caption}>{item.caption}</Text>
+    </View>
+  );
+
     return (
-      <SafeAreaView style={{ flex: 0.1}}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.navBar}>
-        <View style={styles.leftButtons}>
-        {/* Left Button 1 */}
-          <TouchableOpacity onPress={handleLeftButtonPress} style={styles.button}>
-            <Image
-              source={require('./images/friends.png')}
-              style={styles.iconImage}
-            />
-          </TouchableOpacity>
+          <View style={styles.leftButtons}>
+          {/* Left Button 1 */}
+            <TouchableOpacity onPress={handleLeftButtonPress} style={styles.button}>
+              <Image
+                source={require('./images/friends.png')}
+                style={styles.iconImage}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <Image
+            source={require('./images/munch.png')}
+            style={styles.munchTitleImage}
+          />
+
+          <View style={styles.rightButtons}>
+            {/* Right Button 1 */}
+            <TouchableOpacity onPress={handleRightButtonPress} style={styles.button}>
+              <Image
+                source={require('./images/map.png')}
+                style={styles.iconImage}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <Image
-          source={require('./images/munch.png')}
-          style={styles.munchTitleImage}
+        <FlatList
+          data={feedData}
+          keyExtractor={(item) => item.id}
+          renderItem={renderFeedItem}
+          style={styles.feedContainer}
         />
-
-        <View style={styles.rightButtons}>
-          {/* Right Button 1 */}
-          <TouchableOpacity onPress={handleRightButtonPress} style={styles.button}>
-            <Image
-              source={require('./images/map.png')}
-              style={styles.iconImage}
-            />
-          </TouchableOpacity>
-        </View> 
-        </View>
       </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-  navBar: {
+  container: {
     flex: 1,
+  },
+  navBar: {
+    flex: 0.01,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -81,6 +102,25 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginLeft: 12,
     marginTop: 20,
+  },
+  feedContainer: {
+    flex: 1,
+    marginTop: 100,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
+  },
+  feedItem: {
+    marginBottom: 16,
+  },
+  feedImage: {
+    width: '100%',
+    height: 200,
+    borderRadius: 8,
+    resizeMode: 'cover',
+  },
+  caption: {
+    marginTop: 8,
+    fontSize: 16,
   },
 });
 
