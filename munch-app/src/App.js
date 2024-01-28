@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './homeScreen';
 import FriendScreen from './friendScreen';
 import MapScreen from './mapScreen';
+import UserPostScreen from './userPostScreen';
 
 
 
@@ -20,6 +21,7 @@ return (
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
         <Stack.Screen name="Munchers" component={FriendScreen} />
         <Stack.Screen name="Munch Map" component={MapScreen} />
+        <Stack.Screen name="Post Screen" component={UserPostScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
